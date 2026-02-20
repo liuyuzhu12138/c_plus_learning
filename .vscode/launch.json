@@ -1,0 +1,34 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",                // 配置文件版本，固定写法
+    "configurations": [                 // 包含一个或多个调试配置
+        {
+            "name": "调试C++文件",       // 配置名称，显示在调试启动下拉菜单中
+            "type": "cppdbg",           // 调试器类型：cppdbg 表示使用 Microsoft C++ 调试扩展
+            "request": "launch",         // 请求类型：launch 表示启动程序并调试，另一种是 attach（附加到已运行进程）
+            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",  // 要调试的可执行文件路径
+                                         // ${fileDirname}  : 当前打开的源代码文件所在目录
+                                         // ${fileBasenameNoExtension} : 当前文件名（不含扩展名）
+                                         // 组合起来就是：当前目录下与源代码同名的 .exe 文件
+            "args": [""],                  // 传递给程序的命令行参数（数组形式），例如 ["-h", "--verbose"]
+            "stopAtEntry": false,        // 是否在入口点（main 函数）自动暂停，false 表示直接运行到断点
+            "cwd": "${fileDirname}",     // 程序运行时的工作目录，设置为源代码所在目录
+            "environment": [],            // 设置额外的环境变量，例如 [{"name":"PATH","value":"..."}]
+            "externalConsole": false,      // 是否在独立的外部控制台窗口中运行程序（true），而不是 VS Code 内置终端
+            "internalConsoleOptions": "neverOpen", // 控制内部调试控制台的打开行为，neverOpen 表示永不自动打开
+            "MIMode": "gdb",              // 指定底层调试器为 GDB（GNU Debugger）
+            "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe", // GDB 调试器的完整路径，这里指向 MSYS2 环境中的 gdb
+            "setupCommands": [             // 在启动 GDB 时自动执行的命令列表
+                {
+                    "description": "为 gdb 启用整洁打印", // 描述信息
+                    "text": "-enable-pretty-printing",   // 实际发给 GDB 的命令：启用美化打印（使 STL 容器等显示更友好）
+                    "ignoreFailures": true                 // 如果命令执行失败，忽略错误继续调试
+                }
+            ],
+            "preLaunchTask": "C/C++: g++.exe 生成活动文件" // 在调试启动前要执行的任务名称
+                                         // 这个任务通常在 tasks.json 中定义，用于编译当前源文件生成可执行文件
+        }
+    ]
+}

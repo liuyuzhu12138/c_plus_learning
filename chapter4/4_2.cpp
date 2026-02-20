@@ -13,7 +13,7 @@ int main()
     cin >> name1;
     cout << "Well, " << name1 << ", your name has "
          << strlen(name1) << " letters and is stored\n"
-         << "in an array of " << sizeof(name1) << " bytes.\n";
+         << "in an array of " << sizeof(name1) << " bytes.\n"
          << "Your initial is " << name1[0] << ".\n";
     name2[3] = '\0'; // set to null character
     cout << "Here are the first 3 characters of my name: "
