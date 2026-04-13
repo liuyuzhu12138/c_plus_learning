@@ -1,4 +1,4 @@
-//textinl.cpp -- reading chars with a while loop
+//textin1.cpp -- reading chars with a while loop
 #include <iostream>
 int main()
 {
